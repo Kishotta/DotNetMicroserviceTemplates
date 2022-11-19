@@ -15,13 +15,13 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.x
-        - name: Build
-          run: dotnet build --configuration Release
-        - name: Test
-          run: dotnet test --configuration Release
-        - name: Pack NuGets
-          run: dotnet pack --configuration Release --output .
-        - name: Publish NuGets
-          run: dotnet nuget push "*.nuget" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      - name: Build
+        run: dotnet build --configuration Release
+      - name: Test
+        run: dotnet test --configuration Release
+      - name: Pack NuGets
+        run: dotnet pack --configuration Release --output .
+      - name: Publish NuGets
+        run: dotnet nuget push "*.nuget" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       
         
