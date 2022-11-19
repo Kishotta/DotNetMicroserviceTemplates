@@ -20,8 +20,7 @@
         ],
       "continueOnError": true,
       "args": {
-        "solutionFile": "src",
-        "projectFiles": "**/*.*proj"
+        "solutionFile": "src"
       }
     }
   ],
