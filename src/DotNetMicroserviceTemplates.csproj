@@ -9,6 +9,7 @@
         <Description>Templates to use when creating a microservice application.</Description>
         <PackageTags>dotnet-new;templates;c#;asp.net;core;microservice;mvc;</PackageTags>
         <TargetFramework>net6.0</TargetFramework>
+        <RepositoryUrl>https://github.com/Kishotta/DotNetMicroserviceTemplates</RepositoryUrl>
 
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
