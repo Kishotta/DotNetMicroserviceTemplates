@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageVersion>1.0</PackageVersion>
+        <PackageId>Kishotta.Utility.Microservice.Templates</PackageId>
+        <Title>Kishotta Microservice Templates</Title>
+        <Authors>Connor Eaves</Authors>
+        <Description>Templates to use when creating a microservice application.</Description>
+        <PackageTags>dotnet-new;templates;c#;asp.net;core;microservice;mvc;</PackageTags>
+        <TargetFramework>net6.0</TargetFramework>
+
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="Templates\**\*" Exclude="Templates\**\bin\**;Templates\**\obj\**" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+</Project>

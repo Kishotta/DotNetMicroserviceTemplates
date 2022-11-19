@@ -1,0 +1,6 @@
+﻿# Rider
+.idea
+
+# Build results
+src/[Bb]in/
+src/[Oo]bj/
