@@ -2,5 +2,6 @@
 .idea
 
 # Build results
+nupkgs
 src/[Bb]in/
 src/[Oo]bj/
