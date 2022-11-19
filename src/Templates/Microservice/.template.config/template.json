@@ -18,10 +18,7 @@
             "text": "Add generated projects to solution manually."
             }
         ],
-      "continueOnError": true,
-      "args": {
-        "solutionFile": "src"
-      }
+      "continueOnError": true
     }
   ],
   "sourceName": "Microservice"
