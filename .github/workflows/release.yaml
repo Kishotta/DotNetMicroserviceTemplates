@@ -21,6 +21,8 @@ jobs:
 #        run: dotnet test --configuration Release
       - name: Pack NuGets
         run: dotnet pack src/DotNetMicroserviceTemplates.csproj --configuration Release --output nupkgs
+      - name: Add GitHub NuGet Source
+        run: dotnet nuget add source --username kishotta --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/kishotta/index.json"
       - name: Publish NuGets
         run: dotnet nuget push "nupkgs/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       
