@@ -20,8 +20,8 @@ jobs:
 #      - name: Test
 #        run: dotnet test --configuration Release
       - name: Pack NuGets
-        run: dotnet pack --configuration Release --output .
+        run: dotnet pack ~/src/DotNetMicroserviceTemplates.csproj --configuration Release --output nupkgs
       - name: Publish NuGets
-        run: dotnet nuget push "*.nuget" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "nupkgs/*.nuget" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       
         
