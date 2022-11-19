@@ -2,7 +2,7 @@
     
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>1.0.5-alpha</PackageVersion>
+        <PackageVersion>1.0.6-alpha</PackageVersion>
         <PackageId>Kishotta.Utility.Microservice.Templates</PackageId>
         <Title>Kishotta Microservice Templates</Title>
         <Authors>Connor Eaves</Authors>
