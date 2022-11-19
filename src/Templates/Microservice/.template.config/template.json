@@ -4,10 +4,26 @@
   "author": "Connor Eaves",
   "classifications": [ "C#", "Asp.Net Core", "Core", "Microservice", "MVC" ],
   "name": "Microservice Template",
-  "shortName": "microservice",
   "tags": {
     "language": "C#",
     "type": "project"
   },
+  "shortName": "microservice",
+  "postActions": [
+    {
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "description": "Add projects to solution",
+        "manualInstructions": [
+            {
+            "text": "Add generated projects to solution manually."
+            }
+        ],
+      "continueOnError": true,
+      "args": {
+        "solutionFile": "src",
+        "projectFiles": "**/*.*proj"
+      }
+    }
+  ],
   "sourceName": "Microservice"
 }

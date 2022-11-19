@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetMicroserviceTemplates", "DotNetMicroserviceTemplates.csproj", "{27D63596-71A6-4160-A7F4-CA033C2C983B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Api", "Templates\Microservice\Microservice.Api\Microservice.Api.csproj", "{577BBEB9-E59F-4933-A463-DBAA8E28A26A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Api", "Templates\Microservice\Microservice\Microservice.Api\Microservice.Api.csproj", "{577BBEB9-E59F-4933-A463-DBAA8E28A26A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Presentation", "Templates\Microservice\Microservice.Presentation\Microservice.Presentation.csproj", "{E7927FC9-B7EE-4C68-83D6-43D286FA7EAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Presentation", "Templates\Microservice\Microservice\Microservice.Presentation\Microservice.Presentation.csproj", "{E7927FC9-B7EE-4C68-83D6-43D286FA7EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
