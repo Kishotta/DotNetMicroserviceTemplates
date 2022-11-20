@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Domain", "Templates\Microservice\Microservice.Domain\Microservice.Domain.csproj", "{282A797A-60B4-48B3-A255-3DA82F045D02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Persistence", "Templates\Microservice\Microservice.Persistence\Microservice.Persistence.csproj", "{0114DB63-A8B0-438C-BE13-A510FE496677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Infrastructure", "Templates\Microservice\Microservice.Infrastructure\Microservice.Infrastructure.csproj", "{3DBDCC55-60FD-4367-BA84-E154191A69B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +46,13 @@ Global
 		{282A797A-60B4-48B3-A255-3DA82F045D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{282A797A-60B4-48B3-A255-3DA82F045D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{282A797A-60B4-48B3-A255-3DA82F045D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0114DB63-A8B0-438C-BE13-A510FE496677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0114DB63-A8B0-438C-BE13-A510FE496677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0114DB63-A8B0-438C-BE13-A510FE496677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0114DB63-A8B0-438C-BE13-A510FE496677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DBDCC55-60FD-4367-BA84-E154191A69B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DBDCC55-60FD-4367-BA84-E154191A69B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DBDCC55-60FD-4367-BA84-E154191A69B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DBDCC55-60FD-4367-BA84-E154191A69B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

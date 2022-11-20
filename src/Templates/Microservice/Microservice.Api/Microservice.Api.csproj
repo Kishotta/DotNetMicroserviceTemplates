@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Microservice.Infrastructure\Microservice.Infrastructure.csproj" />
+    <ProjectReference Include="..\Microservice.Persistence\Microservice.Persistence.csproj" />
     <ProjectReference Include="..\Microservice.Presentation\Microservice.Presentation.csproj" />
   </ItemGroup>
 

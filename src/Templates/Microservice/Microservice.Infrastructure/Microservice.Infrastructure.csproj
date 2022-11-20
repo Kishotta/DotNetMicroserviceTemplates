@@ -7,11 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Microservice.Domain\Microservice.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="MediatR" Version="11.1.0" />
+      <ProjectReference Include="..\Microservice.Application\Microservice.Application.csproj" />
+      <ProjectReference Include="..\Microservice.Persistence\Microservice.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
