@@ -1,6 +1,4 @@
-﻿using MediatR;
-using Microservice.Application.WeatherForecasts;
-using Microservice.Presentation.Abstractions;
+﻿using Microservice.Application.WeatherForecasts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

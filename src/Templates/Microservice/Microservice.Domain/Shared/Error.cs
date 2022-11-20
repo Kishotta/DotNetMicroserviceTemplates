@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Microservice.Domain.Shared;
+﻿namespace Microservice.Domain.Shared;
 
 public class Error : IEquatable<Error>
 {

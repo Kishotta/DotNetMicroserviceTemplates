@@ -1,5 +1,5 @@
 using MediatR;
-using Microservice.Domain.IRepositories;
+using Microservice.Domain.Repositories;
 using Microservice.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);

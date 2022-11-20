@@ -1,8 +1,5 @@
-﻿using MediatR;
-using Microservice.Domain.Shared;
+﻿namespace Microservice.Application.Abstractions;
 
-namespace Microservice.Application.Abstractions;
+internal interface ICommand : IRequest<Result> { }
 
-public interface ICommand : IRequest<Result> { }
-
-public interface ICommand<TResponse> : IRequest<Result<TResponse>> { }
+internal interface ICommand<TResponse> : IRequest<Result<TResponse>> { }

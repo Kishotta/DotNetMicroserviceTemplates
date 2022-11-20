@@ -1,10 +1,8 @@
-﻿using Microservice.Application.Abstractions;
-using Microservice.Domain.IRepositories;
-using Microservice.Domain.Shared;
+﻿using Microservice.Domain.Repositories;
 
 namespace Microservice.Application.WeatherForecasts;
 
-public class GetWeatherForecastQueryHandler : IQueryHandler<GetWeatherForecastQuery, IEnumerable<WeatherForecastResponse>>
+internal sealed class GetWeatherForecastQueryHandler : IQueryHandler<GetWeatherForecastQuery, IEnumerable<WeatherForecastResponse>>
 {
     private readonly IWeatherForecastRepository _weatherForecastRepository;
 

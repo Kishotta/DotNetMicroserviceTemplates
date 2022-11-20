@@ -1,5 +1,3 @@
-﻿using Microservice.Application.Abstractions;
+﻿namespace Microservice.Application.WeatherForecasts;
 
-namespace Microservice.Application.WeatherForecasts;
-
-public record GetWeatherForecastQuery : IQuery<IEnumerable<WeatherForecastResponse>>;
+public sealed record GetWeatherForecastQuery : IQuery<IEnumerable<WeatherForecastResponse>>;

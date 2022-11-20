@@ -1,6 +1,6 @@
 ﻿using Microservice.Domain.Entities;
 
-namespace Microservice.Domain.IRepositories;
+namespace Microservice.Domain.Repositories;
 
 public interface IWeatherForecastRepository
 {

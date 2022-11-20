@@ -1,5 +1,5 @@
 ﻿using Microservice.Domain.Entities;
-using Microservice.Domain.IRepositories;
+using Microservice.Domain.Repositories;
 
 namespace Microservice.Infrastructure.Services;
 

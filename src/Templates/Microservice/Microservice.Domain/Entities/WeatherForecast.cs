@@ -1,6 +1,4 @@
-﻿using Microservice.Domain.Primitives;
-
-namespace Microservice.Domain.Entities;
+﻿namespace Microservice.Domain.Entities;
 
 public class WeatherForecast : Entity
 {

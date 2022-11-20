@@ -1,3 +1,3 @@
 ﻿namespace Microservice.Application.WeatherForecasts;
 
-public record WeatherForecastResponse(DateTime Date, int TemperatureC, int TemperatureF, string? Summary);
+public sealed record WeatherForecastResponse(DateTime Date, int TemperatureC, int TemperatureF, string? Summary);
