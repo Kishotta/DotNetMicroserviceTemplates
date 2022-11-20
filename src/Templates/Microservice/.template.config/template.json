@@ -18,8 +18,17 @@
             "text": "Add generated projects to solution manually."
             }
         ],
-      "continueOnError": true
+      "continueOnError": true,
     }
   ],
-  "sourceName": "Microservice"
+  "sourceName": "Microservice",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "Microservice.Api.csproj"
+    },
+    {
+      "path": "Microservice.Presentation.csproj"
+    }
+  ]
 }
