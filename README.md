@@ -1,4 +1,6 @@
-# DotNetMicroserviceTemplates
+# .Net Microservice Templates
+
+These templates are designed to fascilitate building microservice applications quickly and simply by scaffolding useful abstractions based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
 ## Installation
 
