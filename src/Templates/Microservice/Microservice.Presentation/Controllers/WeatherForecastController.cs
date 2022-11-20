@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microservice.Application.WeatherForecasts;
 using Microservice.Presentation.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 
 namespace Microservice.Presentation.Controllers;
 
@@ -16,6 +18,19 @@ public class WeatherForecastController : ApiController
         : base (sender)
         => _logger = logger;
 
+    [HttpOptions]
+    public IActionResult Options ()
+    {
+        HttpContext.Response.Headers.AppendCommaSeparatedValues(
+            HeaderNames.Allow,
+            HttpMethods.Options,
+            HttpMethods.Head,
+            HttpMethods.Get
+            );
+        return Ok ();
+    }
+    
+    [HttpHead (Name = "HeadWeatherForecast")]
     [HttpGet (Name = "GetWeatherForecast")]
     public async Task<IActionResult> Get (CancellationToken cancellationToken)
     {
