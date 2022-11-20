@@ -28,6 +28,18 @@
       "path": "Microservice.Api\\Microservice.Api.csproj"
     },
     {
+      "path": "Microservice.Application\\Microservice.Application.csproj"
+    },
+    {
+      "path": "Microservice.Domain\\Microservice.Domain.csproj"
+    },
+    {
+      "path": "Microservice.Infrastructure\\Microservice.Infrastructure.csproj"
+    },
+    {
+      "path": "Microservice.Persistance\\Microservice.Persistance.csproj"
+    },
+    {
       "path": "Microservice.Presentation\\Microservice.Presentation.csproj"
     }
   ]

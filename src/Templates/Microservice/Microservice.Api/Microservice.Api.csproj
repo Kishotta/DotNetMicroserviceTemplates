@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microservice.Infrastructure\Microservice.Infrastructure.csproj" />
-    <ProjectReference Include="..\Microservice.Persistence\Microservice.Persistence.csproj" />
+    <ProjectReference Include="..\Microservice.Persistance\Microservice.Persistance.csproj" />
     <ProjectReference Include="..\Microservice.Presentation\Microservice.Presentation.csproj" />
   </ItemGroup>
 
