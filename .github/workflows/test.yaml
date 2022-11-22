@@ -3,8 +3,8 @@ name: Build and Test
 on: [push]
 
 jobs:
-  build:
-    name: Build and Test
+  build-microservice:
+    name: Build and Test Microservice Template
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,8 +14,8 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj  --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj  --no-restore --verbosity normal
