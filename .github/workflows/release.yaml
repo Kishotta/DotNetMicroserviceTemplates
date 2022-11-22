@@ -3,7 +3,7 @@
 on:
   release:
     types: [published]
-    
+
 jobs:
   publish:
     name: Build, Pack, and Publish
@@ -27,5 +27,3 @@ jobs:
         run: |
           dotnet nuget add source --username kishotta --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/kishotta/index.json"
           dotnet nuget push "nupkgs/*.nupkg" --api-key ${{ secrets.PACKAGE_MANAGEMENT_PAT }} --source "github"
-      
-        
