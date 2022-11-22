@@ -1,15 +1,11 @@
-using MediatR;
-using Microservice.Domain.Repositories;
-using Microservice.Infrastructure.Services;
+using Microservice.Application;
+using Microservice.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services
-       .AddScoped<IWeatherForecastRepository, WeatherForecastService> ();
-
-builder.Services
-       .AddMediatR(Microservice.Application.AssemblyReference.Assembly);
+builder.Services.AddInfrastructureServices ();
+builder.Services.AddApplicationServices ();
 
 builder.Services
        .AddControllers()
