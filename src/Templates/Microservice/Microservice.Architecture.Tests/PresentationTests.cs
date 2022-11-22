@@ -6,12 +6,7 @@ namespace Microservice.Architecture.Tests;
 
 public class PresentationTests
 {
-    private Assembly _presentationAssembly;
-    
-    public PresentationTests ()
-    {
-        _presentationAssembly = Presentation.AssemblyReference.Assembly;
-    }
+    private readonly Assembly _presentationAssembly = Presentation.AssemblyReference.Assembly;
 
     [Fact]
     public void Presentation_Should_Not_HaveDependencyOnOtherProjects ()
