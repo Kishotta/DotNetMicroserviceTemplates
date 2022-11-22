@@ -18,4 +18,4 @@ jobs:
       - name: Build
         run: dotnet build ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj  --configuration Release --no-restore
       - name: Test
-        run: dotnet test ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj  --no-restore --verbosity normal
+        run: dotnet test ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj  --no-restore
