@@ -14,8 +14,8 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Install dependencies
-        run: dotnet restore .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj
+        run: dotnet restore ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj
       - name: Build
-        run: dotnet build .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj  --configuration Release --no-restore
+        run: dotnet build ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj  --configuration Release --no-restore
       - name: Test
-        run: dotnet test .\src\Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj  --no-restore --verbosity normal
+        run: dotnet test ./src/Templates/Microservice/Microservice.Architecture.Tests/Microservice.Architecture.Tests.csproj  --no-restore --verbosity normal
