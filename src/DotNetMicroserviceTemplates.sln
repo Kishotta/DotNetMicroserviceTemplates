@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Persistence", "Templates\Microservice\Microservice.Persistence\Microservice.Persistence.csproj", "{0114DB63-A8B0-438C-BE13-A510FE496677}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Infrastructure", "Templates\Microservice\Microservice.Infrastructure\Microservice.Infrastructure.csproj", "{3DBDCC55-60FD-4367-BA84-E154191A69B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservice.Architecture.Tests", "Templates\Microservice\Microservice.Architecture.Tests\Microservice.Architecture.Tests.csproj", "{C6713D54-382A-44DE-9288-8E73002B5992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Microservice.Persistence;
+namespace Microservice.Api;
 
 public static class AssemblyReference
 {
