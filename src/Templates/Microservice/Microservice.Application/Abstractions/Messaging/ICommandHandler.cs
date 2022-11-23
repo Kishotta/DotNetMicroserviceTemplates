@@ -1,4 +1,4 @@
-﻿namespace Microservice.Application.Abstractions;
+﻿namespace Microservice.Application.Abstractions.Messaging;
 
 internal interface ICommandHandler<TCommand> : IRequestHandler<TCommand, Result>
     where TCommand : ICommand { }
