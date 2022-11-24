@@ -2,7 +2,7 @@
 
 namespace Microservice.Application.Features.Cars.Queries.GetCarById;
 
-public class GetCarByIdQueryHandler : IQueryHandler<GetCarByIdQuery, CarResponse>
+internal sealed class GetCarByIdQueryHandler : IQueryHandler<GetCarByIdQuery, CarResponse>
 {
     private readonly ICarRepository _carRepository;
     

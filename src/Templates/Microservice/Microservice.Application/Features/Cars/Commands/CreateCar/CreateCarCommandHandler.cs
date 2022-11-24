@@ -4,7 +4,7 @@ using Microservice.Domain.Repositories;
 
 namespace Microservice.Application.Features.Cars.Commands.CreateCar;
 
-public class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, CarResponse>
+internal sealed class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, CarResponse>
 {
     private readonly ICarRepository _carRepository;
     private readonly IUnitOfWork    _unitOfWork;

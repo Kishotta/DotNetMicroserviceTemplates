@@ -1,3 +1,3 @@
 ﻿namespace Microservice.Application.Features.Cars.Queries.GetCarById;
 
-public record GetCarByIdQuery(Guid CarId) : IQuery<CarResponse>;
+public sealed record GetCarByIdQuery(Guid CarId) : IQuery<CarResponse>;
