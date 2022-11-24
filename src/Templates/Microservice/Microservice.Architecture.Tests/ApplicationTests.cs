@@ -30,14 +30,17 @@ public class ApplicationTests
                            .For (Types.InAssembly (_applicationAssembly))
                            .Add (type => type.That ().AreClasses ()
                                              .And ().ImplementInterface (typeof (IQuery<>))
-                                             .Should ().HaveNameEndingWith ("Query")
-                                             .And ().BeSealed (),
+                                             .Should ().HaveNameEndingWith ("Query"),
                                  "Enforcing Query naming",
                                  "Query classes should have names ending with 'Query'")
-                           .Add (type => type.That ().HaveNameEndingWith ("Query")
-                                             .Should ().BeClasses ()
-                                             .And ().BeSealed ()
-                                             .And ().ImplementInterface (typeof (IQuery<>)),
+                            .Add (type => type.That ().AreClasses ()
+                                              .And ().ImplementInterface(typeof(IQuery<>))
+                                              .Should ().BeSealed(),
+                                  "Enforcing Query protection",
+                                  "Query classes should sealed")
+                           .Add (type => type.That ().AreClasses ()
+                                             .And ().HaveNameEndingWith ("Query")
+                                             .Should ().ImplementInterface (typeof (IQuery<>)),
                                  "Enforcing Query Dependency",
                                  "Query classes should implement the 'IQuery' interface");
 
@@ -53,15 +56,17 @@ public class ApplicationTests
                            .For (Types.InAssembly (_applicationAssembly))
                            .Add (type => type.That ().AreClasses ()
                                              .And ().ImplementInterface (typeof (IQueryHandler<,>))
-                                             .Should ().HaveNameEndingWith ("QueryHandler")
-                                             .And ().BeSealed ()
-                                             .And ().HaveDependencyOn (typeof (Domain.AssemblyReference).Namespace),
+                                             .Should ().HaveNameEndingWith ("QueryHandler"),
                                  "Enforcing Query Handler naming",
                                  "Query Handler classes should have names ending with 'QueryHandler'")
-                           .Add (type => type.That ().HaveNameEndingWith ("QueryHandler")
-                                             .Should ().BeClasses ()
-                                             .And ().BeSealed ()
-                                             .And ().ImplementInterface (typeof (IQueryHandler<,>)),
+                           .Add (type => type.That ().AreClasses ()
+                                             .And ().ImplementInterface(typeof(IQueryHandler<,>))
+                                             .Should ().BeSealed(),
+                                 "Enforcing Query Handler protection",
+                                 "Query Handler classes should sealed")
+                           .Add (type => type.That ().AreClasses()
+                                             .And().HaveNameEndingWith ("QueryHandler")
+                                             .Should ().ImplementInterface (typeof (IQueryHandler<,>)),
                                  "Enforcing Query Handler Dependency",
                                  "Query classes should implement the 'IQueryHandler' interface");
 
@@ -78,14 +83,18 @@ public class ApplicationTests
                            .Add (type => type.That ().AreClasses ()
                                              .And ().ImplementInterface (typeof (ICommand))
                                              .Or ().ImplementInterface (typeof (ICommand<>))
-                                             .Should ().HaveNameEndingWith ("Command")
-                                             .And ().BeSealed (),
+                                             .Should ().HaveNameEndingWith ("Command"),
                                  "Enforcing Command naming",
                                  "Command classes should have names ending with 'Command'")
-                           .Add (type => type.That ().HaveNameEndingWith ("Command")
-                                             .And ().AreClasses ()
-                                             .Should ().BeSealed ()
+                           .Add (type => type.That ().AreClasses ()
                                              .And ().ImplementInterface (typeof (ICommand))
+                                             .Or ().ImplementInterface (typeof (ICommand<>))
+                                             .Should ().BeSealed (),
+                                 "Enforcing Command protection",
+                                 "Command classes should sealed")
+                           .Add (type => type.That ().AreClasses ()
+                                             .And ().HaveNameEndingWith ("Command")
+                                             .Should ().ImplementInterface (typeof (ICommand))
                                              .Or ().ImplementInterface (typeof (ICommand<>)),
                                  "Enforcing Command Dependency",
                                  "Command classes should implement the 'ICommand' interface");
@@ -108,6 +117,12 @@ public class ApplicationTests
                                              .And ().HaveDependencyOn (typeof (Domain.AssemblyReference).Namespace),
                                  "Enforcing Command Handler naming",
                                  "Command Handler classes should have names ending with 'CommandHandler'")
+                           .Add (type => type.That ().AreClasses ()
+                                             .And ().ImplementInterface (typeof (ICommandHandler<>))
+                                             .Or ().ImplementInterface (typeof (ICommandHandler<,>))
+                                             .Should ().BeSealed (),
+                                 "Enforcing Command protection",
+                                 "Command classes should sealed")
                            .Add (type => type.That ().HaveNameEndingWith ("CommandHandler")
                                              .Should ().BeClasses ()
                                              .And ().BeSealed ()
