@@ -12,8 +12,15 @@ public class CarRepository : ICarRepository
         _dbContext = dbContext;
     }
 
+    public async Task<Car?> GetByIdAsync (Guid id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Set<Car>()
+                               .FirstOrDefaultAsync(car => car.Id == id, cancellationToken);
+    }
+
     public void Add (Car car)
     {
-        _dbContext.Set<Car> ().Add (car);
+        _dbContext.Set<Car> ()
+                  .Add (car);
     }
 }
