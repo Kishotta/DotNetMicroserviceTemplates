@@ -1,5 +1,6 @@
 ﻿using Microservice.Application.Features.Cars.Commands.CreateCar;
 using Microservice.Application.Features.Cars.Commands.RemoveCar;
+using Microservice.Application.Features.Cars.Commands.UpdateCar;
 using Microservice.Application.Features.Cars.Queries.GetCarById;
 using Microservice.Application.Features.Cars.Queries.GetCars;
 using Microsoft.AspNetCore.Http;
@@ -34,9 +35,9 @@ public sealed class CarsController : ApiController
     {
         var query = new GetCarsQuery ();
 
-        var response = await Sender.Send (query, cancellationToken);
+        var result = await Sender.Send (query, cancellationToken);
         
-        return Ok (response.Value);
+        return Ok (result.Value);
     }
     
     [HttpPost]
@@ -46,7 +47,7 @@ public sealed class CarsController : ApiController
 
         var result = await Sender.Send (command, cancellationToken);
 
-        return CreatedAtAction (nameof(GetCarById), new { id = result.Value.Id }, result.Value);
+        return result.IsSuccess ? CreatedAtAction (nameof(GetCarById), new { id = result.Value.Id }, result.Value) : BadRequest(result.Error);
     }
     
     [HttpOptions ("{id:guid}")]
@@ -68,9 +69,19 @@ public sealed class CarsController : ApiController
     {
         var query = new GetCarByIdQuery (id);
         
-        var response = await Sender.Send (query, cancellationToken);
+        var result = await Sender.Send (query, cancellationToken);
         
-        return response.IsSuccess ? Ok (response.Value) : NotFound (response.Error);
+        return result.IsSuccess ? Ok (result.Value) : NotFound (result.Error);
+    }
+    
+    [HttpPut ("{id:guid}")]
+    public async Task<IActionResult> UpdateCar (Guid id, int year, string make, string model, CancellationToken cancellationToken)
+    {
+        var command = new UpdateCarCommand (id, year, make, model);
+
+        var result = await Sender.Send (command, cancellationToken);
+
+        return result.IsSuccess ? Ok (result.Value) : NotFound (result.Error);
     }
     
     [HttpDelete ("{id:guid}")]
