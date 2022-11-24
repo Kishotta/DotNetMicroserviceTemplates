@@ -1,4 +1,5 @@
 ﻿using Microservice.Application.Features.Cars.Commands.CreateCar;
+using Microservice.Application.Features.Cars.Commands.RemoveCar;
 using Microservice.Application.Features.Cars.Queries.GetCarById;
 using Microservice.Application.Features.Cars.Queries.GetCars;
 using Microsoft.AspNetCore.Http;
@@ -39,7 +40,7 @@ public sealed class CarsController : ApiController
     }
     
     [HttpPost]
-    public async Task<IActionResult> AddCar (int year, string make, string model, CancellationToken cancellationToken)
+    public async Task<IActionResult> CreateCar (int year, string make, string model, CancellationToken cancellationToken)
     {
         var command = new CreateCarCommand (year, make, model);
 
@@ -70,5 +71,15 @@ public sealed class CarsController : ApiController
         var response = await Sender.Send (query, cancellationToken);
         
         return response.IsSuccess ? Ok (response.Value) : NotFound (response.Error);
+    }
+    
+    [HttpDelete ("{id:guid}")]
+    public async Task<IActionResult> RemoveCar (Guid id, CancellationToken cancellationToken)
+    {
+        var command = new RemoveCarCommand (id);
+
+        var result = await Sender.Send (command, cancellationToken);
+
+        return result.IsSuccess ? NoContent () : NotFound (result.Error);
     }
 }

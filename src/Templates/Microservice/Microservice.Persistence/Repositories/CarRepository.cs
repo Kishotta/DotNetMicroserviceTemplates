@@ -29,4 +29,10 @@ public class CarRepository : ICarRepository
         _dbContext.Set<Car> ()
                   .Add (car);
     }
+
+    public void Remove (Car car)
+    {
+        _dbContext.Set<Car> ()
+                  .Remove (car);
+    }
 }
