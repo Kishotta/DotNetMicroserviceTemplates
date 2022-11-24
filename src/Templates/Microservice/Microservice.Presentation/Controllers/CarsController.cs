@@ -28,6 +28,6 @@ public sealed class CarsController : ApiController
 
         var result = await Sender.Send (command, cancellationToken);
 
-        return Ok (result.Value);
+        return CreatedAtAction (nameof(GetCarById), new { id = result.Value.Id }, result.Value);
     }
 }

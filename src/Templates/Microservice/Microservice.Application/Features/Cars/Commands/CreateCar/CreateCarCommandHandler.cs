@@ -1,9 +1,10 @@
-﻿using Microservice.Domain.Entities;
+﻿using Microservice.Application.Features.Cars.Queries.GetCarById;
+using Microservice.Domain.Entities;
 using Microservice.Domain.Repositories;
 
 namespace Microservice.Application.Features.Cars.Commands.CreateCar;
 
-public class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, Guid>
+public class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, CarResponse>
 {
     private readonly ICarRepository _carRepository;
     private readonly IUnitOfWork    _unitOfWork;
@@ -14,7 +15,7 @@ public class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, Guid>
         _unitOfWork = unitOfWork;
     }
     
-    public async Task<Result<Guid>> Handle (CreateCarCommand request, CancellationToken cancellationToken)
+    public async Task<Result<CarResponse>> Handle (CreateCarCommand request, CancellationToken cancellationToken)
     {
         var car = new Car (Guid.NewGuid (), request.Year, request.Make, request.Model);
 
@@ -22,6 +23,6 @@ public class CreateCarCommandHandler : ICommandHandler<CreateCarCommand, Guid>
 
         await _unitOfWork.SaveChangesAsync (cancellationToken);
 
-        return car.Id;
+        return new CarResponse(car.Id, car.Year, car.Make, car.Model);
     }
 }
