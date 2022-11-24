@@ -1,5 +1,4 @@
-﻿using Microservice.Application.Features.Cars.Queries.GetCarById;
-using Microservice.Domain.Entities;
+﻿using Microservice.Domain.Entities;
 using Microservice.Domain.Repositories;
 
 namespace Microservice.Application.Features.Cars.Commands.CreateCar;

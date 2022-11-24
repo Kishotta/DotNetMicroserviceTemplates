@@ -12,6 +12,12 @@ public class CarRepository : ICarRepository
         _dbContext = dbContext;
     }
 
+    public async Task<IEnumerable<Car>> GetAsync (CancellationToken cancellationToken)
+    {
+        return await _dbContext.Set<Car> ()
+                               .ToListAsync (cancellationToken);
+    }
+
     public async Task<Car?> GetByIdAsync (Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<Car>()
