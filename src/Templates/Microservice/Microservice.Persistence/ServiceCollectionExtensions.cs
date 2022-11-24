@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microservice.Domain.Repositories;
+using Microservice.Persistence.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microservice.Persistence;
 
@@ -10,6 +12,10 @@ public static class ServiceCollectionExtensions
         {
             options.UseInMemoryDatabase(configuration.GetConnectionString("DefaultConnection") ?? "In Memory Database");
         });
+
+        services.AddScoped<ICarRepository, CarRepository> ();
+        
+        services.AddScoped<IUnitOfWork, UnitOfWork> ();
 
         return services;
     }
