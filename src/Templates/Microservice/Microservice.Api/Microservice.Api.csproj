@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Microservice.Infrastructure\Microservice.Infrastructure.csproj" />
     <ProjectReference Include="..\Microservice.Persistence\Microservice.Persistence.csproj" />
     <ProjectReference Include="..\Microservice.Presentation\Microservice.Presentation.csproj" />
