@@ -1,16 +1,15 @@
-﻿using Microservice.Application.Features.Cars;
+﻿using System.Net;
+using Microservice.Application.Features.Cars;
 using Microservice.Application.Features.Cars.Commands.CreateCar;
 using Microservice.Application.Features.Cars.Commands.RemoveCar;
 using Microservice.Application.Features.Cars.Commands.UpdateCar;
 using Microservice.Application.Features.Cars.Queries.GetCarById;
 using Microservice.Application.Features.Cars.Queries.GetCars;
-using Microservice.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
-using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
 namespace Microservice.Presentation.Controllers;
 
@@ -24,8 +23,10 @@ public sealed class CarsController : ApiController
     {
         _logger = logger;
     }
-
+    
     [HttpOptions]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ApiExplorerSettings (IgnoreApi = true)]
     public IActionResult Options ()
     {
         HttpContext.Response.Headers.AppendCommaSeparatedValues(
@@ -37,9 +38,22 @@ public sealed class CarsController : ApiController
         );
         return Ok ();
     }
-    
     [HttpHead]
+    [Produces ("application/json")]
+    [ProducesResponseType (StatusCodes.Status200OK)]
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public async Task<IActionResult> HeadCars (CancellationToken cancellationToken)
+    {
+        var query = new GetCarsQuery ();
+
+        var result = await Sender.Send (query, cancellationToken);
+        
+        return Ok (result.Value);
+    }
+    
     [HttpGet]
+    [Produces ("application/json")]
+    [ProducesResponseType (typeof(IEnumerable<CarResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCars (CancellationToken cancellationToken)
     {
         var query = new GetCarsQuery ();
@@ -50,6 +64,8 @@ public sealed class CarsController : ApiController
     }
     
     [HttpPost]
+    [Produces("application/json")]
+    [ProducesResponseType (typeof(CarResponse), StatusCodes.Status201Created)]
     public async Task<IActionResult> CreateCar (int year, string make, string model, CancellationToken cancellationToken)
     {
         var command = new CreateCarCommand (year, make, model);
@@ -60,6 +76,7 @@ public sealed class CarsController : ApiController
     }
     
     [HttpOptions ("{id:guid}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public IActionResult Options (Guid id)
     {
         HttpContext.Response.Headers.AppendCommaSeparatedValues(
@@ -75,7 +92,20 @@ public sealed class CarsController : ApiController
     }
 
     [HttpHead ("{id:guid}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public async Task<IActionResult> HeadCarById (Guid id, CancellationToken cancellationToken)
+    {
+        var query = new GetCarByIdQuery (id);
+        
+        var result = await Sender.Send (query, cancellationToken);
+        
+        return result.IsSuccess ? Ok (result.Value) : NotFound (result.Error);
+    }
+    
     [HttpGet ("{id:guid}")]
+    [Produces("application/json")]
+    [ProducesResponseType (typeof(CarResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType (typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetCarById (Guid id, CancellationToken cancellationToken)
     {
         var query = new GetCarByIdQuery (id);
@@ -86,6 +116,9 @@ public sealed class CarsController : ApiController
     }
     
     [HttpPut ("{id:guid}")]
+    [Produces("application/json")]
+    [ProducesResponseType (typeof(CarResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType (typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateCar (Guid id, int year, string make, string model, CancellationToken cancellationToken)
     {
         var command = new UpdateCarCommand (id, year, make, model);
@@ -96,6 +129,10 @@ public sealed class CarsController : ApiController
     }
 
     [HttpPatch ("{id:guid}")]
+    [Consumes("application/json-patch+json")]
+    [Produces("application/json")]
+    [ProducesResponseType (typeof(CarResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType (typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> PatchCar (Guid id, JsonPatchDocument<CarResponse> patchDocument, CancellationToken cancellationToken)
     {
         var query = new GetCarByIdQuery (id);
@@ -117,6 +154,9 @@ public sealed class CarsController : ApiController
     }
     
     [HttpDelete ("{id:guid}")]
+    [Produces("application/json")]
+    [ProducesResponseType (StatusCodes.Status204NoContent)]
+    [ProducesResponseType (typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> RemoveCar (Guid id, CancellationToken cancellationToken)
     {
         var command = new RemoveCarCommand (id);
