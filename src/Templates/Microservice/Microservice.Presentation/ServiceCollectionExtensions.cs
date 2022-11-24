@@ -6,7 +6,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddPresentationServices (this IServiceCollection services)
     {
-        services.AddControllers();
+        services.AddControllers()
+                .AddNewtonsoftJson();
         
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();

@@ -1,10 +1,14 @@
-﻿using Microservice.Application.Features.Cars.Commands.CreateCar;
+﻿using Microservice.Application.Features.Cars;
+using Microservice.Application.Features.Cars.Commands.CreateCar;
 using Microservice.Application.Features.Cars.Commands.RemoveCar;
 using Microservice.Application.Features.Cars.Commands.UpdateCar;
 using Microservice.Application.Features.Cars.Queries.GetCarById;
 using Microservice.Application.Features.Cars.Queries.GetCars;
+using Microservice.Domain.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
@@ -13,8 +17,13 @@ namespace Microservice.Presentation.Controllers;
 [Route("api/[controller]")]
 public sealed class CarsController : ApiController
 {
-    public CarsController (ISender sender)
-        : base (sender) { }
+    private readonly ILogger<CarsController> _logger;
+    
+    public CarsController (ISender sender, ILogger<CarsController> logger)
+        : base (sender)
+    {
+        _logger = logger;
+    }
 
     [HttpOptions]
     public IActionResult Options ()
@@ -58,7 +67,9 @@ public sealed class CarsController : ApiController
             HttpMethods.Options,
             HttpMethods.Head,
             HttpMethods.Get,
-            HttpMethods.Post
+            HttpMethods.Put,
+            HttpMethods.Patch,
+            HttpMethods.Delete
         );
         return Ok ();
     }
@@ -82,6 +93,27 @@ public sealed class CarsController : ApiController
         var result = await Sender.Send (command, cancellationToken);
 
         return result.IsSuccess ? Ok (result.Value) : NotFound (result.Error);
+    }
+
+    [HttpPatch ("{id:guid}")]
+    public async Task<IActionResult> PatchCar (Guid id, JsonPatchDocument<CarResponse> patchDocument, CancellationToken cancellationToken)
+    {
+        var query = new GetCarByIdQuery (id);
+        
+        var queryResult = await Sender.Send (query, cancellationToken);
+        
+        if (queryResult.IsFailure)
+            return NotFound (queryResult.Error);
+
+        var carResponse = queryResult.Value;
+        
+        patchDocument.ApplyTo(carResponse);
+        
+        var command = new UpdateCarCommand (id, carResponse.Year, carResponse.Make, carResponse.Model);
+        
+        var commandResult = await Sender.Send (query, cancellationToken);
+
+        return commandResult.IsSuccess ? Ok (commandResult.Value) : NotFound (commandResult.Error);
     }
     
     [HttpDelete ("{id:guid}")]
