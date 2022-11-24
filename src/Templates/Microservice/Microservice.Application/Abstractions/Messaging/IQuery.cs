@@ -1,3 +1,3 @@
 ﻿namespace Microservice.Application.Abstractions.Messaging;
 
-internal interface IQuery<TResponse> : IRequest<Result<TResponse>> { }
+public interface IQuery<TResponse> : IRequest<Result<TResponse>> { }
