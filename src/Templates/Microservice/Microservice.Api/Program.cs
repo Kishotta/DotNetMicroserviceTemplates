@@ -1,10 +1,12 @@
 using Microservice.Application;
 using Microservice.Infrastructure;
+using Microservice.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddInfrastructureServices ();
+builder.Services.AddPersistenceServices (builder.Configuration);
 builder.Services.AddApplicationServices ();
 
 builder.Services
