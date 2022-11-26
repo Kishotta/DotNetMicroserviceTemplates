@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseInMemoryDatabase(configuration.GetConnectionString("DefaultConnection") ?? "In Memory Database");
+            options.UseNpgsql(configuration.GetConnectionString("MicroserviceConnection") ?? "In Memory Database");
         });
 
         services.AddScoped<ICarRepository, CarRepository> ();

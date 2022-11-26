@@ -7,6 +7,7 @@ internal sealed class CarConfiguration : IEntityTypeConfiguration<Car>
 {
     public void Configure (EntityTypeBuilder<Car> builder)
     {
+        builder.ToTable ("cars");
         builder.HasKey (car => car.Id);
     }
 }
