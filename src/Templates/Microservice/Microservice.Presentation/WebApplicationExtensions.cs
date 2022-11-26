@@ -20,4 +20,15 @@ public static class WebApplicationExtensions
 
         return app;
     }
+
+    public static IApplicationBuilder AddMvcControllers (this WebApplication app)
+    {
+        app.UseHttpsRedirection();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        return app;
+    }
 }

@@ -13,16 +13,7 @@ builder.Services.AddPresentationServices ();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.AddApiDocumentation ();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.AddApiDocumentation ();
+app.AddMvcControllers ();
 
 app.Run();

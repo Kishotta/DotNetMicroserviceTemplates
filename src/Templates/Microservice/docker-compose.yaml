@@ -1,0 +1,7 @@
+﻿version: "3.7"
+
+services: 
+  microservice-api:
+    build: .
+    ports:
+      - "8080:80"
